@@ -1,0 +1,23 @@
+.cart-wrapper {
+  height: 250px;
+  border: 1px solid gray;
+  width: 50%;
+}
+.btn-wrapper button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
+.text-wrapper span {
+  display: block;
+}
+
+.cart {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
