@@ -1,10 +1,21 @@
 import React from "react";
 import "./Home.css";
+import { connect } from "react-redux";
+import { addToCart, removeFromCart } from "../redux/actions/CartAction";
 
-export default function Home() {
+function Home(props) {
+  const { addToCart, removeFromCart } = props;
+
+  const handleAddTocart = () => {
+    addToCart({
+      name: "Realme",
+      price: "1000rs",
+    });
+  };
+
   return (
     <div>
-      <h1>Home</h1>
+      {/* <h1>Home</h1> */}
       <div className="cart-wrapper">
         <div className="img-wrapper item">
           <img
@@ -19,19 +30,22 @@ export default function Home() {
           <span>Price : 1000rs</span>
         </div>
         <div className="btn-wrapper item">
-          <button>Add to Cart</button>
+          <button onClick={handleAddTocart}>Add to Cart</button>
         </div>
-      </div>
-
-      {/* cart */}
-      <div className="cart">
-        <img
-          src="https://previews.123rf.com/images/val2014/val20141603/val2014160300005/54302312-shopping-cart-icon.jpg"
-          alt=""
-          height="50px"
-          width="50px"
-        />
+        <div className="btn2-wrapper item">
+          <button onClick={() => removeFromCart()}>Remove From Cart</button>
+        </div>
       </div>
     </div>
   );
 }
+
+const mapDispatchToProps = {
+  addToCart,
+  removeFromCart,
+};
+
+const mapStateToProps = (state) => ({
+  cartData: state.cartReducer,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
